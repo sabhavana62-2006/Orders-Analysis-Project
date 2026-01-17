@@ -1,0 +1,26 @@
+CREATE TABLE Orders (
+    order_id INT,
+    customer_id INT,
+    order_amount INT
+);
+INSERT INTO Orders VALUES
+(1, 101, 500),
+(2, 101, 700),
+(3, 102, 300),
+(4, 102, 400),
+(5, 102, 600),
+(6, 103, 1000),
+(7, 103, 1200),
+(8, 103, 800),
+(9, 104, 200),
+(10, 104, 300);
+SELECT customer_id, COUNT(order_id) AS total_orders
+FROM Orders
+GROUP BY customer_id;
+SELECT customer_id, SUM(order_amount) AS total_amount
+FROM Orders
+GROUP BY customer_id;
+SELECT customer_id, COUNT(order_id) AS total_orders
+FROM Orders
+GROUP BY customer_id
+HAVING COUNT(order_id) > 2;
